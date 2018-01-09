@@ -11,7 +11,7 @@ import Foundation
 class Concentration {
     private (set) var cards = [Card]()
     
-    var flips = 0
+    private(set) var flips = 0
     
     
     private var indexOfOneAndOnlyFaceUpCard: Int? {
@@ -38,10 +38,12 @@ class Concentration {
     }
     
     func chooseCard(at index: Int) {
-        flips += 1
+        assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)) : Choosen index out of range")
         if !cards[index].isMatched {
+            flips += 1
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
-                // check if cards match
+                // cards match case
+                print(index, indexOfOneAndOnlyFaceUpCard as Any, matchIndex)
                 if cards[matchIndex].identifier == cards[index].identifier {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
@@ -55,9 +57,9 @@ class Concentration {
         }
     }
     
+    
     func resetGame() {
         flips = 0
-        cards = [Card]()
         for index in cards.indices  {
             cards[index].isFaceUp = false
             cards[index].isMatched = false

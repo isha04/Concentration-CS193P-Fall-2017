@@ -10,18 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
     
-
-    @IBOutlet private var cardButtons: [UIButton]!
-    @IBOutlet private weak var flipCount: UILabel!
-    
     private lazy var game = Concentration(numberOFPairsOFCards: numberOFPairsOFCards)
     
     var numberOFPairsOFCards: Int {
         return (cardButtons.count + 1)/2
     }
+
+    @IBOutlet private var cardButtons: [UIButton]!
+    @IBOutlet private weak var flipCount: UILabel!
     
-    private var emojiChoices = ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎"]
-    private var emoji = [Int: String]()
+    @IBAction func newGame() {
+        game.resetGame()
+        //        indexTheme =  emojiThemes.count.arc4random
+        updateViewFromModel()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +31,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    private var emojiChoices = ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎"]
+    private var emoji = [Int: String]()
     
     @IBAction private func touchCard1(_ sender: UIButton) {
         if let cardNumber = cardButtons.index(of: sender) {
@@ -37,7 +41,6 @@ class ViewController: UIViewController {
         } else {
             print("cardNumber not found")
         }
-        
     }
     
     
@@ -57,18 +60,14 @@ class ViewController: UIViewController {
     }
     
     
-    func emoji(for card: Card) -> String {
-        if emoji[card.identifier] == nil, emojiChoices.count>0 {
+    private func emoji(for card: Card) -> String {
+        if emoji[card.identifier] == nil, emojiChoices.count > 0 {
             emoji[card.identifier] = emojiChoices.remove(at: emojiChoices.count.arc4random)
         }
         return emoji[card.identifier] ?? "?"
     }
     
-    @IBAction func newGame() {
-        game.resetGame()
-//        indexTheme =  emojiThemes.count.arc4random
-       updateViewFromModel()
-    }
+   
 }
 
 extension Int {
