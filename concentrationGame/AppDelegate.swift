@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  concentrationGame
 //
-//  Created by amarjeet on 05/01/18.
-//  Copyright © 2018 amarjeet. All rights reserved.
+//  Created by isha on 05/01/18.
+//  Copyright © 2018 isha. All rights reserved.
 //
 
 import UIKit

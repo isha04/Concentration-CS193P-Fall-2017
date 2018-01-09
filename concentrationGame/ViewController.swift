@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  concentrationGame
 //
-//  Created by amarjeet on 05/01/18.
-//  Copyright © 2018 amarjeet. All rights reserved.
+//  Created by isha on 05/01/18.
+//  Copyright © 2018 isha. All rights reserved.
 //
 
 import UIKit
@@ -11,28 +11,26 @@ import UIKit
 class ViewController: UIViewController {
     
 
-    @IBOutlet var cardButtons: [UIButton]!
-    @IBOutlet weak var flipCount: UILabel!
+    @IBOutlet private var cardButtons: [UIButton]!
+    @IBOutlet private weak var flipCount: UILabel!
     
-    lazy var game = Concentration(numberOFPairsOFCards: (cardButtons.count + 1)/2)
+    private lazy var game = Concentration(numberOFPairsOFCards: numberOFPairsOFCards)
     
-    var emojiChoices = ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎"]
-    var emoji = [Int: String]()
-    
-    var flips = 0 {
-        didSet {
-            flipCount.text = "Flips: \(flips)"
-        }
+    var numberOFPairsOFCards: Int {
+        return (cardButtons.count + 1)/2
     }
+    
+    private var emojiChoices = ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎"]
+    private var emoji = [Int: String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViewFromModel()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
     
-    @IBAction func touchCard1(_ sender: UIButton) {
-        flips += 1
+    @IBAction private func touchCard1(_ sender: UIButton) {
         if let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
@@ -41,6 +39,7 @@ class ViewController: UIViewController {
         }
         
     }
+    
     
     func updateViewFromModel() {
         for index in cardButtons.indices {
@@ -54,17 +53,34 @@ class ViewController: UIViewController {
                 button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
             }
         }
+        flipCount.text = "Flips: \(game.flips)"
     }
     
     
     func emoji(for card: Card) -> String {
         if emoji[card.identifier] == nil, emojiChoices.count>0 {
-            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
-            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+            emoji[card.identifier] = emojiChoices.remove(at: emojiChoices.count.arc4random)
         }
         return emoji[card.identifier] ?? "?"
     }
     
-
+    @IBAction func newGame() {
+        game.resetGame()
+//        indexTheme =  emojiThemes.count.arc4random
+       updateViewFromModel()
+    }
 }
+
+extension Int {
+    var arc4random: Int {
+        if self > 0 {
+            return Int(arc4random_uniform(UInt32(self))) }
+        else if self < 0 {
+            return -Int(arc4random_uniform(UInt32(abs(self))))
+        } else {
+            return 0
+        }
+    }
+}
+
 

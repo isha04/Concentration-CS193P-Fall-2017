@@ -2,8 +2,8 @@
 //  card.swift
 //  concentrationGame
 //
-//  Created by amarjeet on 06/01/18.
-//  Copyright © 2018 amarjeet. All rights reserved.
+//  Created by isha on 06/01/18.
+//  Copyright © 2018 isha. All rights reserved.
 //
 
 import Foundation
@@ -13,8 +13,8 @@ struct Card {
     var isMatched = false
     var identifier: Int
     
-    static var identifierFactory = 0
-    static func getUniqueIdentifier() -> Int {
+    private static var identifierFactory = 0
+    private static func getUniqueIdentifier() -> Int {
         identifierFactory += 1
         return identifierFactory
     }
