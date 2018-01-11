@@ -9,6 +9,11 @@
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -19,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="M5E-ok-gRP">
-                                <rect key="frame" x="51" y="43" width="273" height="312"/>
+                                <rect key="frame" x="52" y="84" width="273" height="312"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="TOY-2b-A6a">
                                         <rect key="frame" x="0.0" y="0.0" width="273" height="72"/>
@@ -140,9 +145,9 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBC-oX-dcw">
-                                <rect key="frame" x="116" y="567" width="143" height="48"/>
+                                <rect key="frame" x="123" y="537" width="121" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="23"/>
                                 <state key="normal" title="New Game">
                                     <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -150,38 +155,40 @@
                                     <action selector="newGame" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ga5-W4-rJ1"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUb-KY-RWw">
-                                <rect key="frame" x="104" y="499" width="162" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Flips: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Gj-1f-wof">
+                                <rect key="frame" x="27" y="473" width="147.5" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flips: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Gj-1f-wof">
-                                <rect key="frame" x="110" y="434" width="141" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUb-KY-RWw">
+                                <rect key="frame" x="217" y="473" width="90.5" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="KUb-KY-RWw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="104" id="M2r-nt-g8W"/>
-                            <constraint firstItem="6Gj-1f-wof" firstAttribute="top" relation="greaterThanOrEqual" secondItem="M5E-ok-gRP" secondAttribute="bottom" constant="8" symbolic="YES" id="OCK-H6-o6d"/>
-                            <constraint firstItem="M5E-ok-gRP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="51" id="P0D-Lz-4tp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="M5E-ok-gRP" secondAttribute="trailing" constant="51" id="Qro-uF-3I8"/>
-                            <constraint firstItem="iBC-oX-dcw" firstAttribute="top" secondItem="KUb-KY-RWw" secondAttribute="bottom" constant="26" id="URK-bf-7sd"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="iBC-oX-dcw" secondAttribute="bottom" constant="52" id="VO0-Z2-kuN"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6Gj-1f-wof" secondAttribute="trailing" constant="124" id="Vb7-DQ-Q0d"/>
-                            <constraint firstItem="6Gj-1f-wof" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="110" id="aaM-jc-ysl"/>
-                            <constraint firstItem="M5E-ok-gRP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="23" id="d4J-4C-rhh"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KUb-KY-RWw" secondAttribute="trailing" constant="109" id="gqv-1d-bvP"/>
-                            <constraint firstItem="iBC-oX-dcw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tYi-kz-zR3"/>
-                            <constraint firstItem="KUb-KY-RWw" firstAttribute="top" secondItem="6Gj-1f-wof" secondAttribute="bottom" constant="23" id="w4R-zF-pes"/>
+                            <constraint firstItem="6Gj-1f-wof" firstAttribute="top" secondItem="KI3-is-5Hz" secondAttribute="bottom" constant="77" id="4jX-8v-63J"/>
+                            <constraint firstItem="iBC-oX-dcw" firstAttribute="top" secondItem="KI3-is-5Hz" secondAttribute="bottom" constant="141" id="GBU-2F-TqV"/>
+                            <constraint firstItem="KUb-KY-RWw" firstAttribute="leading" secondItem="6Gj-1f-wof" secondAttribute="trailing" constant="42.5" id="I48-tV-OaC"/>
+                            <constraint firstItem="KUb-KY-RWw" firstAttribute="top" secondItem="KI3-is-5Hz" secondAttribute="bottom" constant="77" id="IaF-hg-VVh"/>
+                            <constraint firstItem="M5E-ok-gRP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="52" id="P0D-Lz-4tp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="M5E-ok-gRP" secondAttribute="trailing" constant="50" id="Qro-uF-3I8"/>
+                            <constraint firstItem="iBC-oX-dcw" firstAttribute="top" secondItem="6Gj-1f-wof" secondAttribute="bottom" constant="34" id="Wgl-p3-LhG"/>
+                            <constraint firstItem="M5E-ok-gRP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="64" id="d4J-4C-rhh"/>
+                            <constraint firstItem="KUb-KY-RWw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="74.5" id="pds-6F-0gS"/>
+                            <constraint firstItem="6Gj-1f-wof" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-86.75" id="qGh-t2-Z47"/>
+                            <constraint firstItem="iBC-oX-dcw" firstAttribute="top" secondItem="KUb-KY-RWw" secondAttribute="bottom" constant="34" id="sWn-se-Yvg"/>
+                            <constraint firstItem="iBC-oX-dcw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-4" id="t4Q-0W-X4l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="flipCount" destination="6Gj-1f-wof" id="dbb-q1-NES"/>
+                        <outlet property="newGameButton" destination="iBC-oX-dcw" id="QE5-TY-dos"/>
+                        <outlet property="scoreLabel" destination="KUb-KY-RWw" id="fFA-Nw-F1K"/>
                         <outletCollection property="cardButtons" destination="8xt-u2-VWB" collectionClass="NSMutableArray" id="pgI-7Z-g4a"/>
                         <outletCollection property="cardButtons" destination="pbZ-1R-Rfz" collectionClass="NSMutableArray" id="6gK-MS-iGx"/>
                         <outletCollection property="cardButtons" destination="wi7-2A-k6e" collectionClass="NSMutableArray" id="9xW-ie-lzC"/>
