@@ -40,43 +40,72 @@ class Concentration {
 //
 //    }
     
+//    func chooseCard1(at index: Int) {
+//        assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)) : Choosen index out of range")
+//        flips += 1
+//        if !cards[index].isMatched { //First ignoring all match cards
+//
+//            if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index { //you have something to match
+//
+//                // case when cards match
+//                if cards[matchIndex].identifier == cards[index].identifier {
+//                    cards[matchIndex].isMatched = true
+//                    cards[index].isMatched = true
+//                    score += matchBonus
+//                } else {
+//                //cards chosen do not match
+//                    if seenCards.contains(index) {
+//                        score -= missMatchPenalty
+//                    }
+//                    if seenCards.contains(matchIndex) {
+//                        score -= missMatchPenalty
+//                    }
+//                    seenCards.insert(index)
+//                    seenCards.insert(matchIndex)
+//                }
+//                indexOfOneAndOnlyFaceUpCard = nil
+//                cards[index].isFaceUp = true
+//            } else {
+//                // either no card is faceup or two cards face up, so you cant match
+//                for flipDownIndex in cards.indices {
+//                    cards[flipDownIndex].isFaceUp = false
+//                }
+//                cards[index].isFaceUp = true
+//                indexOfOneAndOnlyFaceUpCard = index
+//            }
+//
+//        }
+//    }
+
+
+    
     func chooseCard(at index: Int) {
-        assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)) : Choosen index out of range")
         flips += 1
-        if !cards[index].isMatched { //First ignoring all match cards
-            
-            if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index { //you have something to match
-                
-                // case when cards match
-                if cards[matchIndex].identifier == cards[index].identifier {
-                    cards[matchIndex].isMatched = true
-                    cards[index].isMatched = true
-                    score += matchBonus
-                } else {
-                //cards chosen do not match
-                    if seenCards.contains(index) {
-                        score -= missMatchPenalty
-                    }
-                    if seenCards.contains(matchIndex) {
-                        score -= missMatchPenalty
-                    }
-                    seenCards.insert(index)
-                    seenCards.insert(matchIndex)
+        if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index  {
+            if cards[matchIndex].identifier == cards[index].identifier {
+                cards[matchIndex].isMatched = true
+                cards[index].isMatched = true
+                score += matchBonus
+            } else {//cards chosen do not match, so deducting
+                if seenCards.contains(index) {
+                    score -= missMatchPenalty
                 }
-                indexOfOneAndOnlyFaceUpCard = nil
-                cards[index].isFaceUp = true
-            } else {
-                // either no card is faceup or two cards face up, so you cant match
-                for flipDownIndex in cards.indices {
-                    cards[flipDownIndex].isFaceUp = false
+                if seenCards.contains(matchIndex) {
+                    score -= missMatchPenalty
                 }
-                cards[index].isFaceUp = true
-                indexOfOneAndOnlyFaceUpCard = index
+                seenCards.insert(index)
+                seenCards.insert(matchIndex)
             }
-            
+            cards[index].isFaceUp = true
+            indexOfOneAndOnlyFaceUpCard = nil
+        } else {
+            for flipDownIndex in cards.indices {
+                cards[flipDownIndex].isFaceUp = false
+                }
+            indexOfOneAndOnlyFaceUpCard = index
+            cards[indexOfOneAndOnlyFaceUpCard!].isFaceUp = true
         }
     }
-    
     
     func resetGame() {
         flips = 0
